@@ -1,12 +1,9 @@
-import React, {Component} from 'react';
-import {Text} from "react-native";
-
+import React, { Component } from 'react';
+import { Text } from 'react-native';
 
 interface Props {}
 export default class App extends Component<Props> {
-    render() {
-        return (
-               <Text >My first Comp$$$$$$$$$!!!!!!!</Text>
-        );
-    }
+  render() {
+    return <Text>My first Comp$$$$$$$$$!!!!!!!</Text>;
+  }
 }
