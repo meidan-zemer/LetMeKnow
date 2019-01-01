@@ -1,8 +1,9 @@
 import { DeepReadonly } from 'utility-types';
 import { AnyAction } from 'redux';
+import {product} from "./definitions";
 import { LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILED } from './actions';
 type stateSkeleton = {
-  products: any[];
+  products: product[];
   lastError: string | undefined;
 };
 
