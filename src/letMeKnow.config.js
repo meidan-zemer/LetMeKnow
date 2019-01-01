@@ -1,6 +1,6 @@
 const config = {
   axiosClient: {
-    baseURL: 'http://192.168.1.103:8085',
+    baseURL: 'https://m2v6s60dx8.execute-api.us-east-1.amazonaws.com/dev',
     responseType: 'json'
   }
 };
