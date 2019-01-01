@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from './reducers';
+import { createStore, applyMiddleware } from 'redux';
 import Amplify from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react-native';
+import axios from 'axios';
+import axiosMiddleware from 'redux-axios-middleware';
 import awsConfig from './aws-exports';
 import App from './App';
+import { rootReducer } from './reducers';
+import config from './letMeKnow.config';
 
 Amplify.configure(awsConfig);
 
-import { withAuthenticator } from 'aws-amplify-react-native';
+/*
+ *  Prepare Store redux
+ */
 
-const store = createStore(rootReducer);
-
+const axiosClient = axios.create(config.axiosClient);
+const store = createStore(rootReducer, applyMiddleware(axiosMiddleware(axiosClient)));
+/*
+ * Create navigation container
+ */
 const AppNavigator = createStackNavigator(
   {
-    Home: withAuthenticator(App, true),
+    Home: {
+      screen: App,
+    },
   },
   {
     initialRouteName: 'Home',
@@ -23,8 +34,20 @@ const AppNavigator = createStackNavigator(
 );
 
 const AppNavigatorComp = createAppContainer(AppNavigator);
-interface Props {}
+
+interface Props {
+  authData: any;
+}
 class AppContainer extends Component<Props> {
+  setAxiosAuthorizationHeader() {
+    axios.defaults.headers.common['Authorization'] = this.props.authData.getSignInUserSession().idToken.jwtToken;
+  }
+  componentWillMount() {
+    this.setAxiosAuthorizationHeader();
+  }
+  componentWillUpdate() {
+    this.setAxiosAuthorizationHeader();
+  }
   render() {
     return (
       <Provider store={store}>
@@ -34,4 +57,4 @@ class AppContainer extends Component<Props> {
   }
 }
 
-export default AppContainer;
+export default withAuthenticator(AppContainer, true, [], null, null, { hiddenDefaults: ['phone_number'] });

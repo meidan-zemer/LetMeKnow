@@ -1,23 +1,31 @@
 import { DeepReadonly } from 'utility-types';
 import { AnyAction } from 'redux';
+import { LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILED } from './actions';
 type stateSkeleton = {
-  user: {
-    userName: string;
-  };
+  products: any[];
+  lastError: string | undefined;
 };
 
 export type stateType = DeepReadonly<stateSkeleton>;
 
 const initialState: stateSkeleton = {
-  user: {
-    userName: '',
-  },
+  products: [],
+  lastError: undefined,
 };
 
 export function rootReducer(state: stateType | undefined, action: AnyAction): stateType {
-  let newState = Object.freeze(initialState);
+  let newState: stateType = initialState;
   if (state !== undefined) {
-    newState = { ...(state as Object), user: { userName: '' } };
+    switch (action.type) {
+      case LOAD_PRODUCTS_SUCCESS: {
+        newState = { ...state, products: action.payload.data };
+        break;
+      }
+      case LOAD_PRODUCTS_FAILED: {
+        Object.assign(newState, state, { lastError: 'Error loading products' });
+        break;
+      }
+    }
   }
-  return newState;
+  return Object.freeze(newState);
 }
