@@ -1,10 +1,10 @@
-export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
-export const LOAD_PRODUCTS_SUCCESS = 'LOAD_PRODUCTS_SUCCESS)';
-export const LOAD_PRODUCTS_FAILED = 'LOAD_PRODUCTS_FAILED';
+export const LOAD_CONTACT_POINT = 'LOAD_CONTACT_POINT';
+export const LOAD_CONTACT_POINT_SUCCESS = 'LOAD_CONTACT_POINT_SUCCESS)';
+export const LOAD_CONTACT_POINT_FAILED = 'LOAD_CONTACT_POINT_FAILED';
 
-export function loadProducts() {
+export function loadContactPoints() {
   return {
-    types: [LOAD_PRODUCTS, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILED],
+    types: [LOAD_CONTACT_POINT, LOAD_CONTACT_POINT_SUCCESS, LOAD_CONTACT_POINT_FAILED],
     payload: {
       request: {
         url: '/contactPoints',

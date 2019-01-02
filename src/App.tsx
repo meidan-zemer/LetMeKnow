@@ -4,7 +4,7 @@ import { DeepReadonly } from 'utility-types';
 import { IContainerProps } from './definitions';
 import { connect } from 'react-redux';
 import { stateType } from './reducers';
-import { loadProducts } from './actions';
+import { loadContactPoints } from './actions';
 
 /*const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -12,22 +12,22 @@ import { loadProducts } from './actions';
 });*/
 
 interface AppProps extends IContainerProps {
-  loadProducts: Function;
+  loadContactPoints: Function;
   contactPoint: DeepReadonly<any[]>;
 }
 
 class App extends Component<AppProps> {
-  loadProducts() {
-    this.props.loadProducts();
+  loadContactPoints() {
+    this.props.loadContactPoints();
   }
   componentWillMount() {
-    this.loadProducts();
+    this.loadContactPoints();
   }
   render() {
     return (
       <View style={styles.container}>
-        {this.props.contactPoint.map(prod => (
-          <Text style={styles.welcome}>{prod.name}</Text>
+        {this.props.contactPoint.map(cp => (
+          <Text style={styles.welcome}>{cp.name}</Text>
         ))}
       </View>
     );
@@ -41,7 +41,7 @@ const mapStateToProps = (state: stateType) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    loadProducts: () => dispatch(loadProducts()),
+    loadContactPoints: () => dispatch(loadContactPoints()),
   };
 };
 
