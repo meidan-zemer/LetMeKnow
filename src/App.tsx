@@ -13,7 +13,7 @@ import { loadProducts } from './actions';
 
 interface AppProps extends IContainerProps {
   loadProducts: Function;
-  products: DeepReadonly<any[]>;
+  contactPoint: DeepReadonly<any[]>;
 }
 
 class App extends Component<AppProps> {
@@ -26,7 +26,7 @@ class App extends Component<AppProps> {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.products.map(prod => (
+        {this.props.contactPoint.map(prod => (
           <Text style={styles.welcome}>{prod.name}</Text>
         ))}
       </View>
@@ -34,9 +34,9 @@ class App extends Component<AppProps> {
   }
 }
 
-const mapStateToProps = (state: stateType)  => {
-  //return {products: state.products ? state.products : []};
-  return {products:state.products}
+const mapStateToProps = (state: stateType) => {
+  //return {contactPoint: state.contactPoint ? state.contactPoint : []};
+  return { contactPoint: state.contactPoint };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -45,7 +45,10 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
 
 const styles = StyleSheet.create({
   container: {

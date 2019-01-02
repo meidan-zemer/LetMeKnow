@@ -7,7 +7,7 @@ export function loadProducts() {
     types: [LOAD_PRODUCTS, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILED],
     payload: {
       request: {
-        url: '/products'
+        url: '/contactPoints',
       },
     },
   };

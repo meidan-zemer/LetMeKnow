@@ -1,16 +1,16 @@
 import { DeepReadonly } from 'utility-types';
 import { AnyAction } from 'redux';
-import {product} from "./definitions";
+import { contactPoint } from './definitions';
 import { LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILED } from './actions';
 type stateSkeleton = {
-  products: product[];
+  contactPoint: contactPoint[];
   lastError: string | undefined;
 };
 
 export type stateType = DeepReadonly<stateSkeleton>;
 
 const initialState: stateSkeleton = {
-  products: [],
+  contactPoint: [],
   lastError: undefined,
 };
 
@@ -19,11 +19,11 @@ export function rootReducer(state: stateType | undefined, action: AnyAction): st
   if (state !== undefined) {
     switch (action.type) {
       case LOAD_PRODUCTS_SUCCESS: {
-        newState = { ...state, products: action.payload.data };
+        newState = { ...state, contactPoint: action.payload.data };
         break;
       }
       case LOAD_PRODUCTS_FAILED: {
-        Object.assign(newState, state, { lastError: 'Error loading products' });
+        Object.assign(newState, state, { lastError: 'Error loading contactPoint' });
         break;
       }
     }
