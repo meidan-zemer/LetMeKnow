@@ -1,6 +1,6 @@
 import { DeepReadonly } from 'utility-types';
 import { AnyAction } from 'redux';
-import { contactPoint } from './definitions';
+import { contactPoint } from '../../let-me-know-ts-definitions/definitions';
 import { LOAD_CONTACT_POINT_SUCCESS, LOAD_CONTACT_POINT_FAILED } from './actions';
 type stateSkeleton = {
   contactPoint: contactPoint[];
