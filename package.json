@@ -13,6 +13,7 @@
     "@types/react-redux": "^6.0.11",
     "aws-amplify": "^1.1.18",
     "aws-amplify-react-native": "^2.1.6",
+    "let-me-know-ts-definitions": "file:../let-me-know-ts-definitions",
     "react": "16.6.3",
     "react-native": "0.57.8",
     "react-native-gesture-handler": "^1.0.12",

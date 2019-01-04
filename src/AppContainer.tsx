@@ -8,6 +8,7 @@ import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import awsConfig from './aws-exports';
 import App from './App';
+import AddNewContactPoint from './AddNewContactPoint';
 import { rootReducer } from './reducers';
 import config from './letMeKnow.config';
 
@@ -27,6 +28,9 @@ const AppNavigator = createStackNavigator(
     Home: {
       screen: App,
     },
+      AddNewContactPoint:{
+        screen:AddNewContactPoint
+      }
   },
   {
     initialRouteName: 'Home',

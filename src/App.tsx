@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { DeepReadonly } from 'utility-types';
 import { IContainerProps } from './definitions';
 import { connect } from 'react-redux';
 import { stateType } from './reducers';
 import { loadContactPoints } from './actions';
-
+import {contactPoint} from 'let-me-know-ts-definitions';
 /*const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
@@ -13,7 +13,7 @@ import { loadContactPoints } from './actions';
 
 interface AppProps extends IContainerProps {
   loadContactPoints: Function;
-  contactPoint: DeepReadonly<any[]>;
+  contactPoints: DeepReadonly<contactPoint[]>;
 }
 
 class App extends Component<AppProps> {
@@ -23,11 +23,16 @@ class App extends Component<AppProps> {
   componentWillMount() {
     this.loadContactPoints();
   }
+  private navigateToAddContactPoint = () =>{
+    this.props.navigation.navigate('AddNewContactPoint');
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {this.props.contactPoint.map(cp => (
-          <Text style={styles.welcome}>{cp.name}</Text>
+        <Button onPress={this.navigateToAddContactPoint} title={"Add Contact Point"}/>
+        {this.props.contactPoints.map(cp=> (
+          <Text style={styles.welcome}>{cp.name+" "+cp.description}</Text>
         ))}
       </View>
     );
@@ -35,8 +40,7 @@ class App extends Component<AppProps> {
 }
 
 const mapStateToProps = (state: stateType) => {
-  //return {contactPoint: state.contactPoint ? state.contactPoint : []};
-  return { contactPoint: state.contactPoint };
+  return { contactPoints: state.contactPoints };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
