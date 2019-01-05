@@ -1,4 +1,4 @@
-import {contactPoint} from 'let-me-know-ts-definitions';
+import { contactPoint } from 'let-me-know-ts-definitions';
 
 export const LOAD_CONTACT_POINT = 'LOAD_CONTACT_POINT';
 export const LOAD_CONTACT_POINT_SUCCESS = 'LOAD_CONTACT_POINT_SUCCESS)';
@@ -18,17 +18,17 @@ export function loadContactPoints() {
   };
 }
 
-export function addContactPoint(name:string, description:string){
+export function addContactPoint(name: string, description: string) {
   return {
     types: [ADD_CONTACT_POINT, ADD_CONTACT_POINT_SUCCESS, ADD_CONTACT_POINT_FAILED],
     payload: {
       request: {
         url: '/contactPoint',
-        method:'put',
-        data:{
-          name:name,
-          description:description
-        }
+        method: 'put',
+        data: {
+          name: name,
+          description: description,
+        },
       },
     },
   };
