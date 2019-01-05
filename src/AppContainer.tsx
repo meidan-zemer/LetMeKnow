@@ -6,11 +6,11 @@ import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
-import awsConfig from './aws-exports';
-import App from './ContactPoints';
-import AddNewContactPoint from './AddNewContactPoint';
-import { rootReducer } from './reducers';
-import config from './letMeKnow.config';
+import awsConfig from './definitions/aws-exports';
+import App from './MainContainers/ContactPoints';
+import AddNewContactPoint from './MainContainers/AddNewContactPoint';
+import { rootReducer } from './redux/reducers';
+import config from './definitions/letMeKnow.config';
 
 Amplify.configure(awsConfig);
 

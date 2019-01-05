@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import { addContactPoint } from './actions';
-import { IContainerProps } from './definitions';
+import { addContactPoint } from '../redux/actions';
+import { IContainerProps } from '../definitions/definitions';
 
 interface props extends IContainerProps {
   addContactPoint: (name: string, description: string) => any;

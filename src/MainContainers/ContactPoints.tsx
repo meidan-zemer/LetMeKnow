@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet,View,ScrollView } from 'react-native';
 import { List, ListItem,Button } from 'react-native-elements'
 import { DeepReadonly } from 'utility-types';
-import { IContainerProps } from './definitions';
+import { IContainerProps } from '../definitions/definitions';
 import { connect } from 'react-redux';
-import { stateType } from './reducers';
-import { loadContactPoints } from './actions';
-import { contactPoint } from 'let-me-know-ts-definitions';
+import { stateType } from '../redux/reducers';
+import { loadContactPoints } from '../redux/actions';
+import { contactPoint } from '../../../let-me-know-ts-definitions';
 
 interface ContactPointsProps extends IContainerProps {
   loadContactPoints: Function;
