@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View ,StyleSheet} from 'react-native';
 import { FormInput, FormLabel, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -51,14 +51,18 @@ class UpdateContactPoint extends Component<props, state> {
           <FormLabel>Modidied Date</FormLabel>
           <FormInput editable={false} value={moment(this.props.cp.modifyDate).format()} />
         </View>
-        <View>
-          <Button onPress={this.updateContactPoint} title="Update" backgroundColor={'blue'} />
-          <Button onPress={this.navigateHome} title="Cancel" backgroundColor={'blue'} />
+        <View style={styles.actionContainer}>
+          <Button large backgroundColor={'blue'}  onPress={this.updateContactPoint} title="Update"  />
+          <Button large backgroundColor={'blue'}  onPress={this.navigateHome} title="Cancel" />
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+    actionContainer: {flex:1, flexDirection:"row", justifyContent:"center", paddingTop:10},
+});
 
 const mapStateToProps = (state: stateType, props: any) => {
     const cpId:string = props.navigation.getParam("cpId");
