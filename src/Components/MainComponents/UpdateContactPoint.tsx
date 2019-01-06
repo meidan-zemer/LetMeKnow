@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View ,StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FormInput, FormLabel, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -10,7 +10,7 @@ import { getContactPoint } from '../../redux/stateReader';
 import { stateType } from '../../redux/definitions';
 
 interface props extends IContainerProps {
-  updateContactPoint: (cpId:string, cp: contactPoint) => any;
+  updateContactPoint: (cpId: string, cp: contactPoint) => any;
   cp: contactPoint;
 }
 
@@ -26,7 +26,7 @@ class UpdateContactPoint extends Component<props, state> {
   }
   private updateContactPoint = () => {
     let newCp = { ...this.props.cp, name: this.state.name, description: this.state.description };
-    this.props.updateContactPoint(newCp.cpId,newCp);
+    this.props.updateContactPoint(newCp.cpId, newCp);
   };
   private navigateHome = () => {
     this.props.navigation.navigate('Home');
@@ -52,8 +52,8 @@ class UpdateContactPoint extends Component<props, state> {
           <FormInput editable={false} value={moment(this.props.cp.modifyDate).format()} />
         </View>
         <View style={styles.actionContainer}>
-          <Button large backgroundColor={'blue'}  onPress={this.updateContactPoint} title="Update"  />
-          <Button large backgroundColor={'blue'}  onPress={this.navigateHome} title="Cancel" />
+          <Button large backgroundColor={'blue'} onPress={this.updateContactPoint} title="Update" />
+          <Button large backgroundColor={'blue'} onPress={this.navigateHome} title="Cancel" />
         </View>
       </View>
     );
@@ -61,18 +61,18 @@ class UpdateContactPoint extends Component<props, state> {
 }
 
 const styles = StyleSheet.create({
-    actionContainer: {flex:1, flexDirection:"row", justifyContent:"center", paddingTop:10},
+  actionContainer: { flex: 1, flexDirection: 'row', justifyContent: 'center', paddingTop: 10 },
 });
 
 const mapStateToProps = (state: stateType, props: any) => {
-    const cpId:string = props.navigation.getParam("cpId");
-    const cp = getContactPoint(state, cpId);
-    return { cp };
+  const cpId: string = props.navigation.getParam('cpId');
+  const cp = getContactPoint(state, cpId);
+  return { cp };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateContactPoint: (cpId:string, cp: contactPoint) => dispatch(updateContactPoint(cpId, cp)),
+    updateContactPoint: (cpId: string, cp: contactPoint) => dispatch(updateContactPoint(cpId, cp)),
   };
 };
 

@@ -15,7 +15,7 @@ interface ContactPointsProps extends IContainerProps {
 }
 
 class ContactPoints extends Component<ContactPointsProps> {
-  constructor(props:ContactPointsProps){
+  constructor(props: ContactPointsProps) {
     super(props);
     this.loadContactPoints();
   }
@@ -28,8 +28,8 @@ class ContactPoints extends Component<ContactPointsProps> {
   private navigateToAddContactPoint = () => {
     this.props.navigation.navigate('AddContactPoint');
   };
-  private navigateToUpdateContactPoint = (cpId:string) => {
-    this.props.navigation.navigate('UpdateContactPoint',{cpId:cpId});
+  private navigateToUpdateContactPoint = (cpId: string) => {
+    this.props.navigation.navigate('UpdateContactPoint', { cpId: cpId });
   };
   render() {
     return (
@@ -38,8 +38,12 @@ class ContactPoints extends Component<ContactPointsProps> {
         <ScrollView>
           <List>
             {this.props.contactPoints.map(cp => (
-              <ListItem title={cp.name} key={cp.name} leftIcon={{ name: 'briefcase', type: 'material-community' }}
-                        onPress={()=>this.navigateToUpdateContactPoint(cp.cpId)}/>
+              <ListItem
+                title={cp.name}
+                key={cp.name}
+                leftIcon={{ name: 'briefcase', type: 'material-community' }}
+                onPress={() => this.navigateToUpdateContactPoint(cp.cpId)}
+              />
             ))}
           </List>
         </ScrollView>

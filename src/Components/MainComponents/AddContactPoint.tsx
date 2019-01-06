@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FormInput, FormLabel, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { addContactPoint } from '../../redux/actions';
@@ -47,7 +47,7 @@ class AddContactPoint extends Component<props, state> {
 }
 
 const styles = StyleSheet.create({
-  actionContainer: {flex:1, flexDirection:"row", justifyContent:"center", paddingTop:10},
+  actionContainer: { flex: 1, flexDirection: 'row', justifyContent: 'center', paddingTop: 10 },
 });
 
 const mapDispatchToProps = (dispatch: any) => {

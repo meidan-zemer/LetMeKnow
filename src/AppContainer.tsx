@@ -26,9 +26,9 @@ const store = createStore(rootReducer, applyMiddleware(axiosMiddleware(axiosClie
  */
 const AppNavigator = createStackNavigator(
   {
-    Home: {screen: App},
-    AddContactPoint: {screen: AddContactPoint},
-    UpdateContactPoint: {screen: UpdateContactPoint}
+    Home: { screen: App },
+    AddContactPoint: { screen: AddContactPoint },
+    UpdateContactPoint: { screen: UpdateContactPoint },
   },
   {
     initialRouteName: 'Home',

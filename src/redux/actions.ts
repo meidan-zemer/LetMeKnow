@@ -34,12 +34,12 @@ export function addContactPoint(name: string, description: string) {
   };
 }
 
-export function updateContactPoint(cpId:string,cp: any) {
+export function updateContactPoint(cpId: string, cp: any) {
   return {
     types: [UPDATE_CONTACT_POINT, UPDATE_CONTACT_POINT_SUCCESS, UPDATE_CONTACT_POINT_FAILED],
     payload: {
       request: {
-        url: '/contactPoint/'+cpId,
+        url: '/contactPoint/' + cpId,
         method: 'post',
         data: cp,
       },
