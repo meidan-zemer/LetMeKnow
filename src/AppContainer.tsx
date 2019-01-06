@@ -6,11 +6,12 @@ import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
-import awsConfig from './definitions/aws-exports';
-import App from './MainContainers/ContactPoints';
-import AddNewContactPoint from './MainContainers/AddNewContactPoint';
+import awsConfig from './aws-exports';
+import App from './Components/MainComponents/ContactPoints';
+import AddContactPoint from './Components/MainComponents/AddContactPoint';
+import UpdateContactPoint from './Components/MainComponents/UpdateContactPoint';
 import { rootReducer } from './redux/reducers';
-import config from './definitions/letMeKnow.config';
+import config from './letMeKnow.config';
 
 Amplify.configure(awsConfig);
 
@@ -25,12 +26,9 @@ const store = createStore(rootReducer, applyMiddleware(axiosMiddleware(axiosClie
  */
 const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: App,
-    },
-    AddNewContactPoint: {
-      screen: AddNewContactPoint,
-    },
+    Home: {screen: App},
+    AddContactPoint: {screen: AddContactPoint},
+    UpdateContactPoint: {screen: UpdateContactPoint}
   },
   {
     initialRouteName: 'Home',

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { View } from 'react-native';
+import { FormInput, FormLabel, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { addContactPoint } from '../redux/actions';
-import { IContainerProps } from '../definitions/definitions';
+import { addContactPoint } from '../../redux/actions';
+import { IContainerProps } from '../definitions';
 
 interface props extends IContainerProps {
   addContactPoint: (name: string, description: string) => any;
@@ -12,7 +13,8 @@ type state = {
   name: string;
   description: string;
 };
-class AddNewContactPoint extends Component<props, state> {
+
+class AddContactPoint extends Component<props, state> {
   constructor(props: props) {
     super(props);
     this.state = { name: '', description: '' };
@@ -28,16 +30,16 @@ class AddNewContactPoint extends Component<props, state> {
     return (
       <View>
         <View>
-          <Text>Name:</Text>
-          <TextInput onChangeText={name => this.setState({ name })} value={this.state.name} />
+          <FormLabel>Name</FormLabel>
+          <FormInput onChangeText={name => this.setState({ name })} value={this.state.name} />
         </View>
         <View>
-          <Text>Description:</Text>
-          <TextInput onChangeText={description => this.setState({ description })} value={this.state.description} />
+          <FormLabel>Description</FormLabel>
+          <FormInput onChangeText={description => this.setState({ description })} value={this.state.description} />
         </View>
         <View>
-          <Button onPress={this.addContactPoint} title="Submit" />
-          <Button onPress={this.navigateHome} title="Cancel" />
+          <Button onPress={this.addContactPoint} title="Submit" backgroundColor={'blue'} />
+          <Button onPress={this.navigateHome} title="Cancel" backgroundColor={'blue'} />
         </View>
       </View>
     );
@@ -53,4 +55,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   null,
   mapDispatchToProps,
-)(AddNewContactPoint);
+)(AddContactPoint);
