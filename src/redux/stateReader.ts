@@ -15,3 +15,7 @@ export function getContactPoints(state: stateType): contactPoint[] {
 export function getContactPoint(state: stateType, cpId: string): contactPoint {
   return state.contactPointsByIds[cpId];
 }
+
+export function isLoading(state:stateType): boolean {
+  return state.loading;
+}

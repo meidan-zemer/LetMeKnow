@@ -7,6 +7,7 @@ import {
   ADD_CONTACT_POINT_FAILED,
   UPDATE_CONTACT_POINT_FAILED,
   UPDATE_CONTACT_POINT_SUCCESS,
+  SET_LOADING,
 } from './actions';
 
 import { stateType } from './definitions';
@@ -15,6 +16,7 @@ const initialState: stateType = {
   contactPointsIds: [],
   contactPointsByIds: {},
   lastError: undefined,
+  loading: false,
 };
 
 export function rootReducer(state: stateType | undefined, action: AnyAction): stateType {
@@ -23,6 +25,10 @@ export function rootReducer(state: stateType | undefined, action: AnyAction): st
   } else {
     let newState: stateType = state;
     switch (action.type) {
+      case SET_LOADING: {
+        newState = { ...state, loading: action.payload.isLoading };
+        break;
+      }
       case LOAD_CONTACT_POINT_SUCCESS: {
         let ids: string[] = [];
         let byIds: { [s: string]: contactPoint } = {};

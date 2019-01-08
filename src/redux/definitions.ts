@@ -5,6 +5,7 @@ type stateSkeleton = {
   contactPointsIds: string[];
   contactPointsByIds: { [s: string]: contactPoint };
   lastError: string | undefined;
+  loading: boolean;
 };
 
 export type stateType = DeepReadonly<stateSkeleton>;

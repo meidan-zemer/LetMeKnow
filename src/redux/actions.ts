@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+
 export const LOAD_CONTACT_POINT = 'LOAD_CONTACT_POINT';
 export const LOAD_CONTACT_POINT_SUCCESS = 'LOAD_CONTACT_POINT_SUCCESS)';
 export const LOAD_CONTACT_POINT_FAILED = 'LOAD_CONTACT_POINT_FAILED';
@@ -7,6 +9,7 @@ export const ADD_CONTACT_POINT_FAILED = 'ADD_CONTACT_POINT_FAILED';
 export const UPDATE_CONTACT_POINT = 'UPDATE_CONTACT_POINT';
 export const UPDATE_CONTACT_POINT_SUCCESS = 'UPDATE_CONTACT_POINT_SUCCESS';
 export const UPDATE_CONTACT_POINT_FAILED = 'UPDATE_CONTACT_POINT_FAILED';
+export const SET_LOADING = 'SET_LOADING';
 
 export function loadContactPoints() {
   return {
@@ -33,7 +36,6 @@ export function addContactPoint(name: string, description: string) {
     },
   };
 }
-
 export function updateContactPoint(cpId: string, cp: any) {
   return {
     types: [UPDATE_CONTACT_POINT, UPDATE_CONTACT_POINT_SUCCESS, UPDATE_CONTACT_POINT_FAILED],
@@ -44,5 +46,11 @@ export function updateContactPoint(cpId: string, cp: any) {
         data: cp,
       },
     },
+  };
+}
+export function setLoading(isLoading: boolean): AnyAction {
+  return {
+    type: SET_LOADING,
+    payload: { isLoading },
   };
 }
