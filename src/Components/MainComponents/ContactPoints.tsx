@@ -20,7 +20,7 @@ class ContactPoints extends Component<ContactPointsProps> {
     this.loadContactPoints();
   }
   componentWillUpdate() {
-    this.loadContactPoints();
+
   }
   private loadContactPoints = () => {
     this.props.loadContactPoints();
